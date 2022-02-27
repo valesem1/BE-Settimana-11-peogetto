@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiorna studente</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/Universita.css}" />
+</head>
+<header>
+	<h1>Universita' Innovativa</h1>
+	<h3>Aggiorna studente</h3>
+</header>
+<body>
+	<br>
+	<br>
+	<form action="#" method="post"
+		th:action="@{/aggiornastudente/{matricola} (matricola=${studente.getMatricola()})}"
+		th:object="${studente}">
+
+
+		<span>Matricola:</span><input class="spaziatura" type="text"
+			th:field="*{matricola}" id="matricola"
+			th:disabled="${matricola != null}"> <br> <br> <span>Nome:</span><input
+			class="spaziatura" type="text" th:field="*{nome}" id="nome"
+			placeholder="Inserisci qui il nome" required="required"> <br>
+
+		<br> <span>Cognome:</span><input class="spaziatura" type="text"
+			th:field="*{cognome}" id="cognome"
+			placeholder="Inserisci qui il cognome" required="required"> <br>
+
+		<br> <span>Data di nascita:</span><input class="spaziatura"
+			type="date" pattern="yyyy-MM-dd" th:field="*{dataNascita}"
+			id="dataNascita" required="required"> <br> <br> <span>E-mail:</span><input
+			class="spaziatura" type="email" th:field="*{email}" id="email"
+			placeholder="Inserisci qui l'e-mail" required="required"> <br>
+
+		<br> <span>Indirizzo:</span><input class="spaziatura" type="text"
+			th:field="*{indirizzo}" id="indirizzo"
+			placeholder="Inserisci qui l'indirizzo" required="required">
+		<br> <br> <span>Citta':</span><input class="spaziatura"
+			type="text" th:field="*{citta}" id="citta"
+			placeholder="Inserisci qui la citta'" required="required"> <br>
+
+		<br> <span>Seleziona corso</span><select class="spaziatura"
+			th:field="*{corsoLaurea}">
+			<div th:each="c:${corsi}">
+				<option th:text="${c.getNome}" th:value="${c.getCodice}"></option>
+			</div>
+		</select> <br> <br> <input type="submit" value="Aggiorna studente">
+
+	</form>
+	<br>
+	<br>
+	<form action="http://localhost:8080">
+		<button type="submit">Torna alla home</button>
+	</form>
+</body>
+
+</html>
+</body>
+</html>

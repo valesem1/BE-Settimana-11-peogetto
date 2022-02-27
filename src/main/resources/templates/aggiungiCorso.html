@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inserisci corso</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/Universita.css}" />
+</head>
+<header>
+	<h1>Universita' Innovativa</h1>
+	<h3>Aggiungi nuovo corso</h3>
+</header>
+<body>
+	<br>
+	<br>
+	<form action="#" method="post" th:action="@{/aggiungicorso}"
+		th:object="${corso}">
+
+
+		<span>Codice corso:</span><input class="spaziatura" type="text"
+			th:field="*{codice}" id="codice" placeholder="Es.B58"> <br>
+		<br> <span>Materia:</span><input class="spaziatura" type="text"
+			th:field="*{nome}" id="nome" placeholder="Inserisci qui la materia">
+		<br> <br> <span>Indirizzo sede:</span><input
+			class="spaziatura" type="text" th:field="*{indirizzo}" id="indirizzo"
+			placeholder="Inserisci qui l'indirizzo della sede"> <br>
+		<br> <span>numero esami da sostenere:</span><input
+			class="spaziatura" type="number" th:field="*{numeroEsami}"
+			id="numeroEsami" placeholder="Inserisci qui il numero di esami"
+			min="10"> <br> <br> <br> <input type="submit"
+			value="Inserisci corso">
+
+	</form>
+	<br>
+	<br>
+	<form action="http://localhost:8080">
+		<button type="submit">Torna alla home</button>
+	</form>
+</body>
+
+</html>

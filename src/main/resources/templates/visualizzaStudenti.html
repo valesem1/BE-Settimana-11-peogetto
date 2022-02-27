@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Visualizza studenti</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/Universita.css}" />
+</head>
+<header>
+	<h1>Universita' Innovativa</h1>
+	<h3>Lista degli studenti</h3>
+</header>
+<body>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Matricola</th>
+				<th>Nome</th>
+				<th>Cognome</th>
+				<th>Data di nascita</th>
+				<th>E-mail</th>
+				<th>Indirizzo</th>
+				<th>Citta'</th>
+				<th>Codice corso</th>
+				<th>Materia corso</th>
+			</tr>
+		</thead>
+		<!-- th prende la collection e la cicla per tutti gli elementi, a runtime toglie i th: e mette i dati effettivi -->
+		<div th:each="s : ${dummydb.getStudenti()}">
+			<tbody>
+				<tr>
+
+					<td th:text="${s.getMatricola}"></td>
+					<td th:text="${s.getNome}"></td>
+					<td th:text="${s.getCognome}"></td>
+					<td th:text="${s.getDataNascita}"></td>
+					<td th:text="${s.getEmail}"></td>
+					<td th:text="${s.getIndirizzo}"></td>
+					<td th:text="${s.getCitta}"></td>
+					<td th:text="${s.corsoLaurea.getCodice}"></td>
+					<td th:text="${s.corsoLaurea.getNome}"></td>
+					<td><a
+						th:href="@{/formaggiorna/{matricola}(matricola=${s.getMatricola()})}">Aggiorna</a></td>
+					<td><a
+						th:href="@{/eliminastudente/{matricola}(matricola=${s.getMatricola()})}"
+						onclick="return confirm('Confermi di voler eliminare questo studente?')">Elimina</a></td>
+				</tr>
+			</tbody>
+		</div>
+	</table>
+	<br>
+	<br>
+	<form action="/mostraform">
+		<button type="submit">Aggiungi studente</button>
+	</form>
+	<br>
+	<br>
+	<form action="http://localhost:8080">
+		<button type="submit">Torna alla home</button>
+	</form>
+</body>
+
+</footer>
+</html>

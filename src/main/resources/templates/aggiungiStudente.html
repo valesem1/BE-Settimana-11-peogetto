@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inserisci studente</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/Universita.css}" />
+</head>
+<header>
+	<h1>Universita' Innovativa</h1>
+	<h3>Aggiungi uno studente</h3>
+</header>
+<body>
+	<br>
+	<br>
+	<form action="#" method="post" th:action="@{/aggiungistudente}"
+		th:object="${studente}">
+
+
+		<span>Matricola:</span><input class="spaziatura" type="text"
+			th:field="*{matricola}" id="matricola"
+			placeholder="Inserisci qui la matricola"> <br> <br>
+
+		<span>Nome:</span><input class="spaziatura" type="text"
+			th:field="*{nome}" id="nome" placeholder="Inserisci qui il nome">
+		<br> <br> <span>Cognome:</span><input class="spaziatura"
+			type="text" th:field="*{cognome}" id="cognome"
+			placeholder="Inserisci qui il cognome"> <br> <br> <span>Data
+			di nascita:</span><input class="spaziatura" type="date" pattern="yyyy-MM-dd"
+			th:field="*{dataNascita}" id="dataNascita"> <br> <br>
+
+		<span>E-mail:</span><input class="spaziatura" type="email"
+			th:field="*{email}" id="email" placeholder="Inserisci qui l'e-mail">
+		<br> <br> <span>Indirizzo:</span><input class="spaziatura"
+			type="text" th:field="*{indirizzo}" id="indirizzo"
+			placeholder="Inserisci qui l'indirizzo"> <br> <br>
+
+		<span>Citta':</span><input class="spaziatura" type="text"
+			th:field="*{citta}" id="citta" placeholder="Inserisci qui la citta'">
+		<br> <br> <span>Seleziona corso</span><select
+			class="spaziatura" th:field="*{corsoLaurea}">
+			<div th:each="c:${corsi}">
+				<option th:text="${c.nome}" th:value="${c.codice}"></option>
+			</div>
+		</select> <br> <br> <input type="submit" value="Inserisci studente">
+
+	</form>
+	<br>
+	<br>
+	<form action="http://localhost:8080">
+		<button type="submit">Torna alla home</button>
+	</form>
+</body>
+<footer>
+
+</footer>
+</html>

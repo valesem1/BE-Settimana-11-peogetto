@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Visualizza studenti</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/Universita.css}" />
+</head>
+<header>
+	<h1>Universita' Innovativa</h1>
+	<h3>Lista dei corsi</h3>
+</header>
+<body>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Codice corso</th>
+				<th>Materia</th>
+				<th>Indirizzo sede</th>
+				<th>Numero esami</th>
+			</tr>
+		</thead>
+		<!-- th prende la collection e la cicla per tutti gli elementi, a runtime toglie i th: e mette i dati effettivi -->
+		<div th:each="c : ${corsi}">
+			<tbody>
+				<tr>
+
+					<td th:text="${c.codice}"></td>
+					<td th:text="${c.nome}"></td>
+					<td th:text="${c.indirizzo}"></td>
+					<td th:text="${c.numeroEsami}"></td>
+
+					<td><a
+						th:href="@{/formaggiornacorso/{codice}(codice=${c.codice})}">Aggiorna</a></td>
+					<td><a th:href="@{/eliminacorso/{codice}(codice=${c.codice})}"
+						onclick="return confirm('Confermi di voler eliminare questo corso?')">Elimina</a></td>
+				</tr>
+			</tbody>
+		</div>
+	</table>
+	<br>
+	<br>
+	<form action="/mostraformcorso">
+		<button type="submit">Aggiungi corso</button>
+	</form>
+	<br>
+	<br>
+	<form action="http://localhost:8080">
+		<button type="submit">Torna alla home</button>
+	</form>
+
+</body>
+
+</html>

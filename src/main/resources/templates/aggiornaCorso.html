@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiorna aggiorna corso</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" th:href="@{/css/Universita.css}" />
+</head>
+<header>
+	<h1>Universita' Innovativa</h1>
+	<h3>Aggiorna corso</h3>
+</header>
+<body>
+	<br>
+	<br>
+	<form action="#" method="post"
+		th:action="@{/aggiornacorso/{codice} (codice=${corso.codice})}"
+		th:object="${corso}">
+
+		<span> Codice corso:</span><input class="spaziatura" type="text"
+			th:field="*{codice}" id="codice" th:disabled="${codice != null}">
+		<br> <br> <span>Materia:</span><input class="spaziatura"
+			type="text" th:field="*{nome}" id="nome"
+			placeholder="Inserisci qui la materia" required="required"> <br>
+
+		<br> <span>Indirizzo sede:</span><input class="spaziatura"
+			type="text" th:field="*{indirizzo}" id="indirizzo"
+			placeholder="Inserisci qui l'indirizzo della sede"
+			required="required"> <br> <br> <span>Numero
+			esami da sostenere:</span><input class="spaziatura" type="number"
+			th:field="*{numeroEsami}" id="numeroEsami" min="10"> <br>
+		<br> <input type="submit" value="Aggiorna corso">
+	</form>
+	<br>
+	<br>
+	<form action="http://localhost:8080">
+		<button type="submit">Torna alla home</button>
+	</form>
+</body>
+
+</html>
+</body>
+</html>

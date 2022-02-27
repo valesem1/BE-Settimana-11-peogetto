@@ -11,7 +11,7 @@ import it.gestionesegreteria.model.CorsoLaurea;
 import it.gestionesegreteria.model.DummyDB;
 import it.gestionesegreteria.model.Studente;
 
-//questa classe viene utilizzata per caricare il database all'avvio (in questo caso il database è DummyDB)
+//questa classe utilizzata per caricare il database all'avvio (in questo caso il database è DummyDB)
 @Component
 public class DummyDBLoader implements CommandLineRunner {
 	
